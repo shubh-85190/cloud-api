@@ -9,6 +9,9 @@ import { AddItemComponent } from './add-item/add-item.component';
 import { ViewCartComponent } from './view-cart/view-cart.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { MainComponent } from './main/main.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ApisService } from './apis.service';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,16 @@ import { RegisterComponent } from './register/register.component';
     AddItemComponent,
     ViewCartComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MainComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ApisService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
