@@ -1,11 +1,11 @@
-<div class="container-fluid ">
-<div class="card" style="width: 18rem;" *ngFor="let i of this.foodlist">
-    <img [src]="i.img" class="card-img-top" alt="...">
+<div class="container-fluid main-container">
+<div class="card m-1 shadow mb-2" *ngFor="let i of this.foodlist">
+    <img [src]="i.img" class="card-img" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{i.name}}</h5>
-      <p class="card-text">{{i.price}}</p>
-      <p class="card-text">{{i.dsc}}</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <p class="card-text">&#8377;{{i.price}}.00</p>
+      <!-- <p class="card-text">{{i.dsc}}</p> -->
+      <a href="#" class="btn btn-primary">Add</a>
     </div>
   </div>
 </div>
