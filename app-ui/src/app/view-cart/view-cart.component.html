@@ -1,1 +1,20 @@
-<p>view-cart works!</p>
+<div class="container-fluid main-container">
+    <div class="card m-1 shadow mb-2" *ngFor="let i of this.foodlist">
+        <img [src]="i.img" class="card-img" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{i.name}}</h5>
+            <p class="card-text fw-medium">&#8377;{{i.price}}.00</p>
+            <!-- <p class="card-text">{{i.dsc}}</p> -->
+
+            <div class="btn-group w-75" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-danger fw-bolder">
+                    <span class="bi bi-dash-lg"></span>
+                </button>
+                <input class="w-50 text-center p-2 fs-5 fw-bolder" type="text" disabled value="1">
+                <button type="button" class="btn btn-success fw-bolder text-center">
+                    <span class="bi bi-plus-lg"></span>
+                </button>
+              </div>
+        </div>
+    </div>
+</div>
