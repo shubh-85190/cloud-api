@@ -1,0 +1,8 @@
+.card{
+    background: rgb(60,50,201);
+background: radial-gradient(circle, rgba(60,50,201,1) 0%, rgba(138,43,226,1) 60%, rgba(128,42,209,1) 99%);
+}
+.btn{
+    background: rgb(64,209,39);
+background: radial-gradient(circle, rgba(64,209,39,1) 24%, rgba(78,255,46,1) 64%, rgba(98,255,87,1) 79%);
+}
