@@ -9,6 +9,32 @@ import { ApisService } from '../apis.service';
 export class MainComponent {
 
   foodlist:any={};
+  count:number=0;
+  cart:any=[];
+
+  addClick(id:string)
+  {
+    let flag=true;
+    if(this.cart.length > 0){
+    this.cart.forEach( (element:any) => {
+      console.log(`Inside if : ${JSON.stringify(element)}`);
+      if(element['id']==id){
+        console.log(`Already in cart : ${element['id']} : ${element['quantity']}`)
+        element['quantity']=element['quantity']+1;
+        flag=false;
+        return;
+      }
+    });
+  }
+  if(flag){
+    let obj = {
+      'id':id,
+      quantity:1
+    }
+    this.cart.push(obj);
+  }
+    console.log(this.cart);
+  }
 
   constructor(private apis:ApisService){
     // apis.getfoodlist().subscribe(response=>{
