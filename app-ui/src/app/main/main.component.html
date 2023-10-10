@@ -6,17 +6,33 @@
       <h5 class="card-title">{{i.name}}</h5>
       <p class="card-text">&#8377;{{i.price}}.00</p>
       <!-- <p class="card-text">{{i.dsc}}</p> -->
-      <button class="btn btn-primary" (click)="this.addClick(i.id)">Add</button>
-      <span></span>
+
+      <div *ngIf="this.mycart[i.id] then plusminus else addbutton">
+      </div>
+
+      <ng-template #plusminus>
+      <div class="btn-group w-75" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-danger fw-bolder" (click)="this.removeClick(i.id,i)">
+            <span class="bi bi-dash-lg"></span>
+        </button>
+        <input class="w-50 text-center p-1 fs-5 fw-bolder" type="text" disabled [value]="this.mycart[i.id]">
+        <button type="button" class="btn btn-success fw-bolder text-center" (click)="this.addClick(i.id,i)">
+            <span class="bi bi-plus-lg"></span>
+        </button>
+      </div>
+    </ng-template>
+
+    <ng-template #addbutton>
+      <button class="btn btn-success w-75" (click)="this.addClick(i.id,i)">Add</button>
+    </ng-template>
     </div>
   </div>
 </div>
 
-<a routerLink="/viewcart">
+<button (click)="this.viewCart()">
 <div class="cart">
-  <button class="count">{{this.cart.length}}</button>
+  <span class="count">{{this.count}}</span>
   <div class="cart-icon">
     <img src="../../assets/cart.png" alt="">
   </div>
-</div></a>
-<router-outlet></router-outlet>
+</div></button>

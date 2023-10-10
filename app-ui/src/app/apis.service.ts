@@ -14,4 +14,8 @@ export class ApisService {
   adduser(obj:any):Observable<any>{
     return this.http.post(`${this.baseURL}/user/adduser`,obj);
   }
+
+  login(obj:any):Observable<any>{
+    return this.http.post(`${this.baseURL}/user/login`,obj);
+  }
 }

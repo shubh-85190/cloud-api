@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:'main',component : MainComponent},
   {path:'default',component : MainComponent},
   {path: '', redirectTo: '/default', pathMatch: 'full' },
-  {path:'viewcard',component : ViewCartComponent},
+  {path:'viewcart',component : ViewCartComponent},
   { path: '**', redirectTo: '/main' }
 ];
 

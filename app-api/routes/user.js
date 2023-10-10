@@ -13,6 +13,10 @@ router.post('/adduser',async (req,res)=>{
     const data=req.body;
     userController.adduser(req,res,data);
 })
+router.post('/login',async (req,res)=>{
+    const data=req.body;
+    userController.login(req,res,data);
+})
 
 router.post('/')
 

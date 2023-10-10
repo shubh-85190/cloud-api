@@ -1,6 +1,37 @@
 const dbconnect=require('../DbConnection/dbconnection');
 const token=require('./token');
+const userDBaction=require('../DbConnection/userDBaction');
 
+
+exports.login = async (req,res,data)=>{
+    if(!data.email || data.email=='')
+    {
+        res.json({
+            error:true,
+            message:"Invalid Email Address Provided."
+        });
+        return;
+    }
+
+    if(!data.password || data.passwrod=='')
+    {
+        res.json({
+            error:true,
+            message:"Please provide valid password "
+        });
+        return;
+    }
+
+    result = await dbconnect.validateLoginData(data);
+    res.json({
+        result
+    });
+
+    // res.json({
+    //     error:false,
+    //     message:'Login Success'
+    // })
+}
 
 exports.adduser = async (req,res,data)=>{
     if(!data.email || data.email=='')

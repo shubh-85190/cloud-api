@@ -27,6 +27,9 @@ const client = new MongoClient(uri, {
   }
 });
 
+exports.getConnection = async ()=>{return client}
+exports.getDBname = async ()=>{return dbname}
+
 async function run() {
   try {
     await client.connect();
@@ -91,5 +94,23 @@ async function insertMenuItem(item) {
     }
   }
 
+exports.validateLoginData = async (data)=>{
+  const email=data.email;
+  const userpassword=data.password;
+  try {
+    await client.connect();
+    const database = client.db(dbname);
+    const collection = database.collection('users');
+    const result  = await collection.find({
+      'email':email,
+      'password':userpassword
+    });
+    console.log(result);
+    return result;
+    
+  } finally {
+    await client.close();
+  }
+}
 exports = {insertOrder,insertMenuItem};
-// run().catch(console.dir);
+// run().catch(console.dir);  

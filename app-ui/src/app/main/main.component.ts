@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ApisService } from '../apis.service';
 import { AppRoutingModule } from '../app-routing.module';
+import { DatatransferService } from '../datatransfer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -10,45 +12,66 @@ import { AppRoutingModule } from '../app-routing.module';
 export class MainComponent {
 
   foodlist:any={};
-  count:number=0;
+  
   cart:any=[];
+  mycart:any={};
+  addeditem:any=[];
+  count:number=0;
+  itemOBJ:any=[];
 
-  addClick(id:string)
-  {
-    let flag=true;
-    if(this.cart.length > 0){
-    this.cart.forEach( (element:any) => {
-      console.log(`Inside if : ${JSON.stringify(element)}`);
-      if(element['id']==id){
-        console.log(`Already in cart : ${element['id']} : ${element['quantity']}`)
-        element['quantity']=element['quantity']+1;
-        flag=false;
-        return;
-      }
-    });
-  }
-  if(flag){
-    let obj = {
-      'id':id,
-      quantity:1
+  removeClick(id:string,i:any){
+    if(this.mycart[id]==1)
+    {
+      delete this.mycart[id];
+      this.itemOBJ.splice(this.itemOBJ.indexOf(i));
+      this.count=this.count-1;
     }
-    this.cart.push(obj);
-  }
-    console.log(this.cart);
-  }
-
-  isincart(id:string):number{
-    let itemcount=0;
-    this.cart.forEach((element:any)=>{
-      if(element[id])
-      {
-        itemcount=element['quantity']
-      }
-    })
-    return itemcount;
+    else{
+      this.mycart[id]=this.mycart[id]-1;
+    }
+    console.log(this.mycart);
   }
 
-  constructor(private apis:ApisService){
+  addClick(id:string,i:any)
+  {
+
+    if(this.mycart[id])
+    {
+      this.mycart[id]=this.mycart[id]+1;
+    }
+    else{
+    this.mycart[id]=1;
+    this.itemOBJ.push(i);
+    }
+    console.log(this.mycart);
+    this.count=Object.keys(this.mycart).length;
+    // if(!this.addeditem.includes(id))
+    // {
+    //   this.addeditem.push(id);
+    //   let obj = {
+    //     'id':id,
+    //     quantity:1
+    //   }
+    //   this.cart.push(obj);
+    // }
+    // else{
+    // this.cart.forEach( (element:any) => {
+    //   console.log(`Inside if : ${JSON.stringify(element)}`);
+    //   if(element['id']==id){
+    //     // console.log(`Already in cart : ${element['id']} : ${element['quantity']}`)
+    //     element['quantity']=element['quantity']+1;
+    //     return;
+    //   }
+    // });}
+    // console.log(this.cart);
+  }
+
+  viewCart(){
+    this.svcdatatransfer.setCartItem(this.mycart,this.itemOBJ);
+    this.router.navigate(['/viewcart']);
+  }
+
+  constructor(private apis:ApisService,private svcdatatransfer:DatatransferService,private router:Router){
     // apis.getfoodlist().subscribe(response=>{
     //   this.foodlist=response;
     //   console.log(this.foodlist);

@@ -10,9 +10,6 @@ router.post('/login',(request,response)=>{
         name : "shubh85190@gmail.com",
         password:"Shubh@85190"
     }
-
-
-
     const validuser=true;
     if(validuser==true)
     {

@@ -84,7 +84,8 @@ right: 0; */
 
 }
 .cart-icon:hover{
-  animation: spinner-e04l1k 0.5s linear;
+  /* animation: spinner-e04l1k 0.5s linear; */
+  background-color: rgb(210,210, 210);
 }
 @keyframes spinner-e04l1k {
     100% {
