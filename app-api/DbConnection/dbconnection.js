@@ -101,11 +101,15 @@ exports.validateLoginData = async (data)=>{
     await client.connect();
     const database = client.db(dbname);
     const collection = database.collection('users');
-    const result  = await collection.find({
+    console.log({
       'email':email,
-      'password':userpassword
     });
-    console.log(result);
+    const result  = await collection.find({"email":"shubh85190@gmail.com"},(err,result)=>{
+      if(err) console.log(err);
+      console.log(result);
+    });
+    console.log('result sent');
+    // console.log(result);
     return result;
     
   } finally {
