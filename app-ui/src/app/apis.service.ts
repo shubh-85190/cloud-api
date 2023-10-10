@@ -5,9 +5,13 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ApisService {
-  baseURL='http://localhost:3200';
+  baseURL='http://192.168.43.9:5500';
   constructor(private http:HttpClient) { }
+
   getfoodlist():Observable<any>{
     return this.http.get(`${this.baseURL}/our-foods`);
+  }
+  adduser(obj:any):Observable<any>{
+    return this.http.post(`${this.baseURL}/user/adduser`,obj);
   }
 }

@@ -37,6 +37,17 @@ export class MainComponent {
     console.log(this.cart);
   }
 
+  isincart(id:string):number{
+    let itemcount=0;
+    this.cart.forEach((element:any)=>{
+      if(element[id])
+      {
+        itemcount=element['quantity']
+      }
+    })
+    return itemcount;
+  }
+
   constructor(private apis:ApisService){
     // apis.getfoodlist().subscribe(response=>{
     //   this.foodlist=response;

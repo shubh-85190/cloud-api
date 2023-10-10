@@ -1,9 +1,9 @@
 const express=require("express");
 require('dotenv').config();
-
+const cors=require('cors');
 const app=express();
 const PORT=process.env.PORT;
-
+app.use(cors());
 const tokenRoute = require("./routes/token");
 const userRoute = require("./routes/user");
 
@@ -15,6 +15,16 @@ app.get("/",(req,res)=>{
         message:`Server is working...`,
     });
 });
+
+// const corsOption={
+//     origin:'http://localhost:4200',
+//     methods:'GET,POST',
+//     credential:true,
+//     optionsSuccessStatus:204,
+//     'Access-Control-Allow-Credentials':true
+// };
+
+// app.use(cors(corsOption))
 
 
 

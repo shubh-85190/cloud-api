@@ -4,21 +4,21 @@
             <div class="input-group">
                 <label for="txtname" class="px-3 fs-5 input-group-text bg-gradient bg-info w-25">
                     <span class="bi bi-person-fill"></span> &nbsp;Name </label>
-                <input type="text" name="txtname" placeholder="Enter Your Name" class="form-control fs-5" id="">
+                <input type="text" name="txtname" [(ngModel)]="this.name" placeholder="Enter Your Name" class="form-control fs-5" id="txtname">
             </div>
         </div>
         <div class="email my-2 shadow">
             <div class="input-group">
                 <label for="txtemail" class="px-3 fs-5 input-group-text bg-gradient bg-info w-25">
                     <span class="bi bi-envelope-fill"></span> &nbsp;Email </label>
-                <input type="text" name="txtemail" placeholder="Enter Your Email Address" class="form-control fs-5" id="">
+                <input type="text" name="txtemail" [(ngModel)]="this.email" placeholder="Enter Your Email Address" class="form-control fs-5" id="txtemail">
             </div>
         </div>
         <div class="phone my-2 shadow">
             <div class="input-group">
                 <label for="phone" class="px-3 fs-5 input-group-text bg-gradient bg-info w-25">
                     <span class="bi bi-phone-fill"></span> &nbsp;Mobile </label>
-                <input type="number" name="phone" placeholder="Enter Your Mobile Number" class="form-control fs-5" id="">
+                <input type="number" name="phone" [(ngModel)]="this.mobile" placeholder="Enter Your Mobile Number" class="form-control fs-5" id="phone">
             </div>
         </div>
         <div class="gender my-2 shadow">
@@ -29,16 +29,15 @@
             <div class="radio-inputs">
                 <div class="form-control d-flex justify-content-around">
                     <label>
-                        <input class="radio-input" type="radio" name="engine">
+                        <input checked=""  class="radio-input" type="radio" name="gener" value="male" [(ngModel)]="this.gender">
                         <span class="radio-tile">
                             <span class="radio-icon">
-
                             </span>
                             <span class="radio-label">Male</span>
                         </span>
                     </label>
                     <label>
-                        <input checked="" class="radio-input" type="radio" name="engine">
+                        <input class="radio-input" type="radio" name="gender" value="female" [(ngModel)]="this.gender">
                         <span class="radio-tile">
                             <span class="radio-icon">
 
@@ -47,7 +46,7 @@
                         </span>
                     </label>
                     <label>
-                        <input class="radio-input" type="radio" name="engine">
+                        <input class="radio-input" type="radio" value="other" name="gender" [(ngModel)]="this.gender">
                         <span class="radio-tile">
                             <span class="radio-icon">
                             </span>
@@ -79,21 +78,35 @@
             <div class="input-group">
                 <label for="password" class="px-3 fs-5 input-group-text bg-gradient bg-info w-25">
                     <span class="bi bi-key-fill"></span>&nbsp; Password </label>
-                <input type="password" name="txtpassword"  placeholder="Enter Your Password" class="fs-5 form-control" id="">
+                <input type="password" name="txtpassword" [(ngModel)]="this.password" placeholder="Enter Your Password" class="fs-5 form-control" id="password">
             </div>
         </div>
         <div class="password my-2 shadow">
             <div class="input-group">
                 <label for="txtcpassword" class="px-3 fs-5 input-group-text bg-gradient bg-info w-25">
                     <span class="bi bi-key-fill"></span>&nbsp; Confirm Password </label>
-                <input type="password" name="txtcpassword"  placeholder="Re-enter Password" class="fs-5 form-control" id="">
+                <input type="password" name="txtcpassword" [(ngModel)]="this.cpassword" placeholder="Re-enter Password" class="fs-5 form-control" id="txtcpassword">
+            </div>
+        </div>
+        <div class="password my-2 shadow">
+            <div class="input-group">
+                <label for="txtaddress" class="px-3 fs-5 input-group-text bg-gradient bg-info w-25">
+                    <span class="bi bi-house-gear-fill"></span>&nbsp;Address </label>
+                <input type="textarea" name="txtaddress" [(ngModel)]="this.address" placeholder="Enter Your Address" class="fs-5 form-control" id="txtaddress">
+            </div>
+        </div>
+        <div class="password my-2 shadow">
+            <div class="input-group">
+                <label for="nbrpincode" class="px-3 fs-5 input-group-text bg-gradient bg-info w-25">
+                    <span class="bi bi-geo-alt-fill"></span>&nbsp;PIN CODE </label>
+                <input type="number" name="nbrpincode" [(ngModel)]="this.pincode" placeholder="462030" class="fs-5 form-control" id="nbrpincode">
             </div>
         </div>
         <div class="submit mt-3 pb-2 text-center">
-            <button type="submit" class="btn fs-4 w-75 shadow">
-                <span class="bi bi-person-plus-fill px-1"></span>&nbsp;Create Account</button>
-                <div class="fs-4 w-100 mt-2 shadow">
-                    Already have an account? <a href="" class="text-decoration-none">LogIn Here</a></div>
+            <button class="btn fs-4 w-75 shadow" type="submit" (click)="submitClick()">
+                <span class="bi bi-person-plus-fill px-1" ></span>&nbsp;Create Account</button>
+                <div class="fs-4 w-100 mt-2 shadow text-white">
+                    Already have an account? <a href="/login" class="text-decoration-none text-info fw-bold">LogIn Here</a></div>
         </div>
     </div>
 </div>

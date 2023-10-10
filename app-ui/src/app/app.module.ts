@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { MainComponent } from './main/main.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ApisService } from './apis.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,12 @@ import { ApisService } from './apis.service';
     LoginComponent,
     RegisterComponent,
     MainComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ApisService],
   bootstrap: [AppComponent]
