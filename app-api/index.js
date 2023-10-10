@@ -19,6 +19,6 @@ app.get("/",(req,res)=>{
 
 
 
-app.listen(PORT,(request,response)=>{
+app.listen(PORT,'0.0.0.0',(request,response)=>{
     console.log(`Server is listening at port ${PORT}`);
 })

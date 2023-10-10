@@ -1,0 +1,1 @@
+ng serve --port 5501 --host 0.0.0.0
