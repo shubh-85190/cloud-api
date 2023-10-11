@@ -11,13 +11,13 @@
 
 // }
 // const getenv = require('../constants/getenv');
-require('dotenv').config()
+const getenv=require('../getenv');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
-const username = encodeURIComponent(process.env.DB_USERNAME);
-const password = encodeURIComponent(process.env.DB_PASSWORD);
-const cluster = process.env.DB_CLUSTER;
-const dbname = process.env.DBNAME;
+const username = encodeURIComponent(getenv.DB_USERNAME);
+const password = encodeURIComponent(getenv.DB_PASSWORD);
+const cluster = getenv.DB_CLUSTER;
+const dbname = getenv.DBNAME;
 const uri = `mongodb+srv://${username}:${password}@${cluster}/${dbname}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   serverApi: {
@@ -40,26 +40,6 @@ async function run() {
   }
 }
 
-exports.insertUser  = async (user)=>{
-    try {
-      await client.connect();
-      const database = client.db(dbname);
-      const collection = database.collection('users');
-      const result  = await collection.insertOne(user);
-      console.log(`Insert user Count : ${JSON.stringify(result)}}`);
-      if(result.acknowledged==true && result.insertedId)
-      {
-        return true;
-      }
-      return false;
-    }
-    catch(err){
-      return false;
-    }
-     finally {
-      await client.close();
-    }
-}
 
 async function insertOrder(orderOBJ) {
     try {

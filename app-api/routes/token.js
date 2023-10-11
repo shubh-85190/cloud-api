@@ -45,17 +45,20 @@ router.post('/verify',(req,res)=>{
         {
             res.json({
             err,
+            status:'error',
             error:true,
             message:"Token Verification failed"
         });
         return;
     }   
+    else{
 
         res.json({
+            status:'success',
             error:false,
             message:'token verification successfull',
             authData
-        });
+        });}
     })
 }
 });

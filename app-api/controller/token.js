@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
-require('dotenv').config();
+const getenv=require('../getenv');
 
-const secretKey=process.env.SECRET_KEY;
+const secretKey=getenv.SECRET_KEY;
 
 exports.getToken = async (data)=>{
     console.log('token creation called.......');

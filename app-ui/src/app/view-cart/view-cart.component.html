@@ -12,16 +12,43 @@
             <h5 class="card-title">{{i.name}}</h5>
             <p class="card-text fw-medium">&#8377;{{i.price}}.00</p>
             <div class="btn-group w-75" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-danger fw-bolder">
+                <button type="button" class="btn btn-danger fw-bolder" (click)="this.removeClick(i.id,i)">
                     <span class="bi bi-dash-lg"></span>
                 </button>
                 <input class="w-50 text-center p-2 fs-5 fw-bolder" type="text" disabled [value]="this.mycart[i.id]">
-                <button type="button" class="btn btn-success fw-bolder text-center">
+                <button type="button" class="btn btn-success fw-bolder text-center" (click)="this.addClick(i.id,i)">
                     <span class="bi bi-plus-lg"></span>
                 </button>
               </div>
         </div>
     </div>
+
+    <div class="summury w-100 shadow rounded-3 p-3 m-2 my-3">
+        <h6>Billing Details : </h6>
+        <table class="w-100 justify-content-space-between">
+            <tr *ngFor="let i of this.foodlist">
+                <td>{{i.name}} X {{this.mycart[i.id]}}</td>
+                <td>: {{i.price*this.mycart[i.id]}}.00</td>
+            </tr>
+            <tr>
+                <td>Delivery Charge</td>
+                <td>: 40.00</td>
+            </tr>
+            <tr>
+                <td>GST & other taxes</td>
+                <td>: 18.00</td>
+            </tr>
+            <tr class="text-success">
+                <td>Discount</td>
+                <td>: -10.00</td>
+            </tr>
+            <tr>
+                <td>Total Amount </td>
+                <td>: </td>
+            </tr>
+        </table>
+    </div>
+
     <div class="w-100 text-center">
         <button class="btn btn-primary w-75">Confirm Order</button>
     </div>
