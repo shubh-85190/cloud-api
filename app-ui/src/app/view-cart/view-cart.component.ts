@@ -7,30 +7,8 @@ import { DatatransferService } from '../datatransfer.service';
   styleUrls: ['./view-cart.component.css']
 })
 export class ViewCartComponent {
-  foodlist:any=[
-    // {
-    //   "id": "the-gramercy-tavern-burger-4-pack",
-    //   "img": "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/137148/Gramercy-Tavern-Burger-and-Kielbasa-Kit-6.4.21-72ppi-1x1-15.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
-    //   "name": "Gramercy Tavern",
-    //   "dsc": "The Gramercy Tavern Burger - 4 Pack",
-    //   "price": 99,
-    //   "rate": 5,
-    //   "country": "New York, NY"
-    // },
-    // {
-    //   "id": "shake-shack-shackburger-8-pack",
-    //   "img": "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/134862/shake-shack-shackburger-8-pack.973a5e26836ea86d7e86a327becea2b0.png?ixlib=react-9.0.2&auto=format&ar=1%3A1",
-    //   "name": "Shake Shack",
-    //   "dsc": "Shake Shack ShackBurger® – 8 Pack",
-    //   "price": 49,
-    //   "rate": 5,
-    //   "country": "New York, NY"
-    // }
-  ];
-  mycart:any={
-    // 'the-gramercy-tavern-burger-4-pack':4,
-    // 'shake-shack-shackburger-8-pack':3
-  };
+  foodlist:any=[];
+  mycart:any={};
 
   ngOnInit(){
     this.foodlist=this.svcdatatransfer.getCartItems();

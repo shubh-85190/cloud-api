@@ -1,6 +1,5 @@
 const getenv=require('../getenv');
 const { MongoClient, ServerApiVersion } = require('mongodb');
-
 const username = encodeURIComponent(getenv.DB_USERNAME);
 const password = encodeURIComponent(getenv.DB_PASSWORD);
 const cluster = getenv.DB_CLUSTER;
@@ -13,6 +12,7 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   }
 });
+
 
 
 exports.validateLoginData = async (email)=>{    

@@ -76,6 +76,9 @@ export class MainComponent {
     //   this.foodlist=response;
     //   console.log(this.foodlist);
     // });
+    this.mycart=this.svcdatatransfer.getmycart();
+    this.itemOBJ=this.svcdatatransfer.getCartItems();
+    this.count=this.itemOBJ.length;
     this.foodlist=[
       {
         "id": "the-gramercy-tavern-burger-4-pack",

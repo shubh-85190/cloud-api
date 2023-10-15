@@ -1,0 +1,31 @@
+<!-- Popup start -->
+<div [hidden]="this.content.hidden">
+<div class="popup"></div>
+<div class="popup-content">
+
+    <div *ngIf="this.content.state=='pending' then loading else loadingdone ">
+
+    </div>
+
+    <ng-template #loadingdone>
+        <div *ngIf="this.content.state=='done' then done else error"></div>
+        <button class="popup-button" (click)="this.okClicked()">OK</button>
+    </ng-template>
+
+    <ng-template #done>
+        <div class="tick fs-1 fw-bold text-success">&check;</div>
+        <div class="popup-text fs-4 fw-bold text-success" >{{this.content.text}}</div>
+    </ng-template>
+
+    <ng-template #error>
+        <div class="tickerror fs-1 fw-bold text-danger">X</div>
+        <div class="popup-text fs-4 fw-bold text-danger" >{{this.content.text}}</div>
+    </ng-template>
+
+    <ng-template #loading>
+        <div class="loader"></div>
+        <div class="popup-text fs-4 fw-bold" >{{this.content.text}}</div>
+    </ng-template>
+</div>
+</div>
+<!-- Popup ends -->

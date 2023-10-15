@@ -26,8 +26,24 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   }
 });
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
 
-exports.getConnection = async ()=>{return client}
+// exports.client = client;
+
+exports.getConnection=async()=>{
+  try {
+    // const client = new MongoClient(uri, options);
+    await client.connect();
+    console.log('Connected to MongoDB');
+    return client;
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    throw error;
+  }
+}
 exports.getDBname = async ()=>{return dbname}
 
 async function run() {
@@ -97,4 +113,5 @@ exports.validateLoginData = async (data)=>{
   }
 }
 exports = {insertOrder,insertMenuItem};
+// module.exports={getConnection}
 // run().catch(console.dir);  

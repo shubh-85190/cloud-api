@@ -1,14 +1,14 @@
 const express=require("express");
-// require('dotenv').config();
 const cors=require('cors');
 const app=express();
-// const PORT=process.env.PORT;
 const getenv=require('./getenv');
 const PORT = getenv.PORT;
 app.use(cors());
 const tokenRoute = require("./routes/token");
 const userRoute = require("./routes/user");
+const itemRoute = require("./routes/items");
 
+app.use('/master/items',itemRoute);
 app.use('/token',tokenRoute);
 app.use('/user',userRoute);
 

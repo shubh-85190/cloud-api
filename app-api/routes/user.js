@@ -5,7 +5,6 @@ const userController=require('../controller/userController');
 // const {getToken}=require('./token');
 const token=require('../controller/token');
 router.use(express.json());
-
 const dbconnect=require('../DbConnection/dbconnection');
 
 
@@ -18,6 +17,6 @@ router.post('/login',async (req,res)=>{
     userController.login(req,res,data);
 })
 
-router.post('/')
+// router.post('/')
 
 module.exports = router;

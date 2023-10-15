@@ -1,0 +1,29 @@
+.bg-success{
+    /* background-color: #16db65 !important; */
+    background-color: #0093E9 !important;
+background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%) !important;
+
+}
+
+.accordion:active,
+.accordion:hover{
+    cursor: pointer;
+}
+
+.bg-red{
+    background-image: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);
+}
+.bg-green{
+    background-image: linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%);
+}
+.bg-yellow{
+    background-image: linear-gradient( 135deg, #FDEB71 10%, #F8D800 100%);
+}
+
+.bg-red:hover,
+.bg-green:hover,
+.bg-yellow:hover{
+    filter:brightness(85%);
+}
+
+
