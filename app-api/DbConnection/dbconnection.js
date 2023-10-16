@@ -38,12 +38,13 @@ exports.getConnection=async()=>{
     // const client = new MongoClient(uri, options);
     await client.connect();
     console.log('Connected to MongoDB');
-    return client;
+    return client.db();
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);
     throw error;
   }
 }
+
 exports.getDBname = async ()=>{return dbname}
 
 async function run() {

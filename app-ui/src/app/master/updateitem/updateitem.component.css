@@ -1,0 +1,51 @@
+.input-box{
+    padding: 5px 10px;
+    border-radius: 8px;
+    border:1px groove grey;
+}
+.input-box:disabled{
+    filter: brightness(70%);
+}
+
+table{
+    margin: auto;
+}
+
+.label-td{
+    font-weight: bold;
+    font-size:medium;
+    text-align: end;
+    padding-inline: 10px;
+    margin: 80px !important;
+    height: 50px;
+}
+.btn{
+    padding: 5px 10px;
+    border-radius: 8px;
+    background-color: rgb(87, 177, 87);
+    margin: 0 10px;
+    font-weight: bold;
+}
+.btn:hover{
+    filter: brightness(90%);
+}
+.btn:active{
+    filter: brightness(80%);
+}
+.reset{
+    background-color: rgb(234, 234, 34);
+}
+.btn-div{
+    text-align: center;
+    padding: 15px 0 0 0;
+}
+.container{
+    border: 2px solid gray;
+    margin:10px auto;
+    padding: 20px 15px;
+    border-radius: 12px;
+    background-color: aquamarine;
+}
+textarea{
+    width: -webkit-fill-available;
+}

@@ -1,7 +1,15 @@
 *{
-    color: white;
+    color: black;
 }
 nav{
-    background-color: rgb(128, 42, 209) !important;
+    /* background-color: rgb(128, 42, 209) !important; */
+    /* background-color: #8BC6EC  !important;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%) !important; */
+    background-image: linear-gradient( 135deg,#EA5455 10%, #FEB692  100%) !important;
     
+}
+
+.navbar-brand{
+    font-family: 'Permanent Marker', cursive !important;
+    font-style: italic;
 }

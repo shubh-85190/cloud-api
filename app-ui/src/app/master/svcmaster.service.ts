@@ -11,6 +11,12 @@ export class SvcmasterService {
   constructor(private http:HttpClient) { }
   private base='http://localhost:5500/master';
 
+  // login api
+  login(dataObj:any):Observable<any>{
+    return this.http.post(`${this.base}/login`,dataObj);
+  }
+
+
   // Services for kitchen status
   svcChangeKitchenStatus(dataObj:any):Observable<any>{
     return this.http.post(`${this.base}/kitchenstatus`,dataObj);
@@ -35,8 +41,8 @@ export class SvcmasterService {
     return this.http.post(`${this.base}/items/updateitem`,dataObj);
   }
 
-  svViewItems(dataObj:any):Observable<any>{
-    return this.http.post(`${this.base}/items/deleteitem`,dataObj);
+  svcViewItems():Observable<any>{
+    return this.http.get(`${this.base}/items/viewitem`);
   }
 
   // services for orders
@@ -55,6 +61,5 @@ export class SvcmasterService {
   svViewOrders(dataObj:any):Observable<any>{
     return this.http.post(`${this.base}/master/deleteitem`,dataObj);
   }
-
 
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SvcmasterService } from '../svcmaster.service';
+import { DatatransfermasterService } from '../datatransfermaster.service';
 
 @Component({
   selector: 'app-additems',
@@ -23,16 +24,17 @@ export class AdditemsComponent {
   };
   hidepopup:boolean=true;
 
-  constructor(private svcmaster:SvcmasterService){
+  constructor(private svcmaster:SvcmasterService,private datatransfer:DatatransfermasterService){
     this.hidepopup=false;
     this.popupData.hidden=false;
+    this.popupData.text='Generating new id for item..';
+    this.popupData.state='pending';
     svcmaster.svcGetId().subscribe(response=>{
-      console.log(response);
-      this.item.id = response.message;
-    });
-
-    this.hidepopup=true;
-    this.popupData.hidden=true;
+        console.log(response);
+        this.item.id = response.message;
+        this.hidepopup=true;
+      this.popupData.hidden=true;
+      });    
   }
 
   submitClick(){

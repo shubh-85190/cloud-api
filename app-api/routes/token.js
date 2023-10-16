@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 require('dotenv').config();
 
-const secretKey=process.env.SECRETKEY;
+const secretKey=process.env.SECRET_KEY;
 
 router.post('/login',(request,response)=>{
     var user={

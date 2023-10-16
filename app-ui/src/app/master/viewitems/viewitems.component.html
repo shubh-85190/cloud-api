@@ -1,0 +1,19 @@
+<div class="container-fluid main-container">
+
+    <div class="card m-1 shadow mb-2" *ngFor="let i of this.itemList">
+      <img [src]="i.img" class="card-img" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Name : {{i.name}}</h5>
+        <p class="card-text"><span class="item-label">Item ID : </span> {{i.id}}</p>
+        <p class="card-text"><span class="item-label">Price : </span> &#8377;{{i.price}}</p>
+        <p class="card-text"><span class="item-label">Category : </span> {{i.category}}</p>
+        <p class="card-text"><span class="item-label">Sub-Category : </span> {{i.subcategory}}</p>
+        <p class="card-text"><span class="item-label">Description : </span> {{i.desc}}</p>
+        <!-- <p class="card-text">{{i.dsc}}</p> -->
+        <button class="btn btn-warning m-1" (click)="this.updateClicked(i)">Update</button>
+        <button class="btn btn-danger m-1">Delete</button>
+        </div>
+    </div>
+  </div>
+
+<app-popup [hidden]="this.hidepopup" [content]="this.popupData"></app-popup>

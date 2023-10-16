@@ -7,10 +7,12 @@ app.use(cors());
 const tokenRoute = require("./routes/token");
 const userRoute = require("./routes/user");
 const itemRoute = require("./routes/items");
+const masterRoute = require("./routes/master");
 
 app.use('/master/items',itemRoute);
 app.use('/token',tokenRoute);
 app.use('/user',userRoute);
+app.use('/master',masterRoute);
 
 app.get("/",(req,res)=>{
     res.json({

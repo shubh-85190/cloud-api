@@ -19,10 +19,8 @@ router.post('/updateitem',(req,res)=>{
     itemsController.updateItem(req.body,res);
 });
 
-router.post('/viewitem',(req,res)=>{
+router.get('/viewitem',(req,res)=>{
     itemsController.viewItems(req.body,res);
 });
-
-
 
 module.exports = router;

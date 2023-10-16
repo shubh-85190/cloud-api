@@ -18,3 +18,29 @@ exports.getToken = async (data)=>{
 
     });})
 }
+
+exports.verifyToken = async (token)=>{
+    console.log('verifying token');
+    return new Promise((resolve,reject)=>{
+        jwt.verify(token,secretKey,(err,authData)=>{
+            if(err) 
+            {
+                res.json({
+                err,
+                status:'error',
+                error:true,
+                message:"Token Verification failed"
+            });
+            return;
+        }   
+        else{
+    
+            res.json({
+                status:'success',
+                error:false,
+                message:'token verification successfull',
+                authData
+            });}
+        })
+    })
+}

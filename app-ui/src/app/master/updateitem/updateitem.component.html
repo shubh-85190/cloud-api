@@ -1,0 +1,53 @@
+<div class="container">
+    <h3 class="text-center">Update below information</h3>
+
+    <div class="form">
+        <form>
+        <table>
+            <tr>
+                <td class="label-td"><label for="">Item ID : </label></td>
+                <td><input type="text" name="item-id" [(ngModel)]="this.item.id" id="item-id" class="input-box" disabled></td>
+            </tr>
+
+            <tr>
+                <td class="label-td"><label for="item-name">Item Name : </label></td>
+                <td><input type="text" name="item-name" [(ngModel)]="this.item.name" id="item-name" class="input-box" placeholder="Pizza"></td>
+            </tr>
+
+            <tr>
+                <td class="label-td"><label for="item-desc">Item Description : </label></td>
+                <td><textarea type="text" name="item-desc" id="item-desc" [(ngModel)]="this.item.desc" class="input-box" placeholder="This is a Pizza"></textarea></td>
+            </tr>
+
+            <tr>
+                <td class="label-td"><label for="item-price">Item Price : </label></td>
+                <td><input type="nummber" name="item-price" id="item-price" [(ngModel)]="this.item.price" class="input-box" placeholder="100.00"></td>
+            </tr>
+
+            <tr>
+                <td class="label-td"><label for="item-imgurl">Item Image URL : </label></td>
+                <td><input type="text" name="item-imgurl" id="item-imgurl" [(ngModel)]="this.item.img" class="input-box" placeholder="http://google.com/image.jpg"></td>
+            </tr>
+
+            <tr>
+                <td class="label-td"><label for="item-category">Item Category : </label></td>
+                <td><input type="text" name="item-category" id="item-category" [(ngModel)]="this.item.category" class="input-box" placeholder="Food" disabled=""></td>
+            </tr>
+
+            <tr>
+                <td class="label-td"><label for="item-subc">Item Sub-Category : </label></td>
+                <td><input type="text" name="item-subc" id="item-subc" [(ngModel)]="this.item.subcategory" class="input-box" placeholder="Pizza"></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" class="btn-div">
+                <button class="btn submit" type="submit" (click)="this.submitClick()">Update Item</button>
+            </td>
+            </tr>
+
+        </table>
+    </form>
+    </div>
+</div>
+
+<app-popup [hidden]="this.hidepopup" [content]="this.popupData"></app-popup>

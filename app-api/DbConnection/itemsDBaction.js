@@ -1,23 +1,9 @@
 const getenv=require('../getenv');
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const username = encodeURIComponent(getenv.DB_USERNAME);
-const password = encodeURIComponent(getenv.DB_PASSWORD);
-const cluster = getenv.DB_CLUSTER;
-const dbname = getenv.DBNAME;
-const uri = `mongodb+srv://${username}:${password}@${cluster}/${dbname}?retryWrites=true&w=majority`;
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
-
+const dbconnection = require('./dbconnection');
 
 exports.insertItem  = async (item)=>{
     try {
-      await client.connect();
-      const database = client.db(dbname);
+      const database = await dbconnection.getConnection();
       const collection = database.collection('menu');
       const result  = await collection.insertOne(item);
       console.log(`Insert item Count : ${JSON.stringify(result)}`);
@@ -31,21 +17,47 @@ exports.insertItem  = async (item)=>{
       console.log(err);
       return false;
     }
-     finally {
-      await client.close();
-    }
 }
+
+exports.updateItem  = async (item)=>{
+  try {
+    const database = await dbconnection.getConnection();
+    const collection = database.collection('menu');
+    const filter={id:item.id};
+    const update = {
+      $set :{
+        name:item.name,
+        desc:item.desc,
+        price:item.price,
+        img:item.img,
+        category:item.category,
+        subcategory:item.subcategory
+      }
+    }
+    const result  = await collection.updateOne(filter,update);
+    console.log(`Update item Count : ${JSON.stringify(result.modifiedCount)}`);
+    if(result.modifiedCount>0)
+    {
+      return true;
+    }
+    return false;
+  }
+  catch(err){
+    console.log(err);
+    return false;
+  }
+}
+
 
 exports.viewItem  = async ()=>{
     try {
-      await client.connect();
-      const database = client.db(dbname);
+      const database = await dbconnection.getConnection();
       const collection = database.collection('menu');
       const result  = await collection.find().limit(20).toArray();
       console.log(`Items resturned Count : ${result.length}`);
-      if(result.acknowledged==true && result.length>0)
+      if(result.length > 0)
       {
-        return true;
+        return result;
       }
       return false;
     }
@@ -53,18 +65,16 @@ exports.viewItem  = async ()=>{
       console.log(err);
       return false;
     }
-     finally {
-      await client.close();
-    }
 }
 
 exports.getId = async ()=>{
     try {
-        await client.connect();
-        const database = client.db(dbname);
+        // await client.connect();
+        const database = await dbconnection.getConnection();
+        // console.log(database);
         const collection = database.collection('menu');
         const result  = await collection.countDocuments();
-        console.log(`Count of records : ${JSON.stringify(result)}`);
+        console.log(`Count of records : ${result}`);
         if(result)
         {
           return `100${result+1}`;
@@ -74,9 +84,6 @@ exports.getId = async ()=>{
       catch(err){
         console.log(err);
         return false;
-      }
-       finally {
-        await client.close();
       }
 }
 

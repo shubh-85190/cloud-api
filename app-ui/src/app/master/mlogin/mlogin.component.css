@@ -1,0 +1,35 @@
+.card{
+    background: rgb(60,50,201);
+background: radial-gradient(circle, rgba(60,50,201,1) 0%, rgba(138,43,226,1) 60%, rgba(128,42,209,1) 99%);
+}
+.btn{
+    background: rgb(64,209,39);
+background: radial-gradient(circle, rgba(64,209,39,1) 24%, rgba(78,255,46,1) 64%, rgba(98,255,87,1) 79%);
+}
+@media only screen and (max-width:600px){
+    .container-fluid{
+      width: 99% !important;
+      margin-top: 0px !important;
+    }
+    .card{
+      width: 100% !important;
+      padding: 10px 5px !important;
+      border-radius: 8px !important;
+      text-wrap: wrap;
+    }
+    .input-group > label{
+      /* flex-wrap: wrap; */
+      width: 100% !important;
+      border-radius: 12px 12px 0 0 !important;
+      justify-content: center !important;
+    }
+    .input-group > input,
+    .form-control{
+      
+      border-radius: 0 0 12px 12px !important;
+      width: 100% !important;
+      /* justify-content: center !important; */
+      text-align: center;
+      /* background-color: yellow; */
+    }
+      }
