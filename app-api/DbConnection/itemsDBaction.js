@@ -71,7 +71,7 @@ exports.getId = async ()=>{
     try {
         // await client.connect();
         const database = await dbconnection.getConnection();
-        // console.log(database);
+        console.log(database);
         const collection = database.collection('menu');
         const result  = await collection.countDocuments();
         console.log(`Count of records : ${result}`);
