@@ -3,6 +3,7 @@ import { ApisService } from '../apis.service';
 import { AppRoutingModule } from '../app-routing.module';
 import { DatatransferService } from '../datatransfer.service';
 import { Router } from '@angular/router';
+import { PopupComponent } from '../popup/popup.component';
 
 @Component({
   selector: 'app-main',
@@ -10,9 +11,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent {
-
+  content:any={
+    text:'Loading Items please wait...',
+    state:'pending',
+    hidden:false
+  }
   foodlist:any=[];
-  
   cart:any=[];
   mycart:any={};
   addeditem:any=[];
@@ -45,25 +49,6 @@ export class MainComponent {
     }
     console.log(this.mycart);
     this.count=Object.keys(this.mycart).length;
-    // if(!this.addeditem.includes(id))
-    // {
-    //   this.addeditem.push(id);
-    //   let obj = {
-    //     'id':id,
-    //     quantity:1
-    //   }
-    //   this.cart.push(obj);
-    // }
-    // else{
-    // this.cart.forEach( (element:any) => {
-    //   console.log(`Inside if : ${JSON.stringify(element)}`);
-    //   if(element['id']==id){
-    //     // console.log(`Already in cart : ${element['id']} : ${element['quantity']}`)
-    //     element['quantity']=element['quantity']+1;
-    //     return;
-    //   }
-    // });}
-    // console.log(this.cart);
   }
 
   viewCart(){
@@ -71,11 +56,13 @@ export class MainComponent {
     this.router.navigate(['/viewcart']);
   }
 
-  constructor(private apis:ApisService,private svcdatatransfer:DatatransferService,private router:Router){
-    // apis.getfoodlist().subscribe(response=>{
-    //   this.foodlist=response;
-    //   console.log(this.foodlist);
-    // });
+  constructor(private apis:ApisService,
+    private svcdatatransfer:DatatransferService,
+    private router:Router,
+    private popup:PopupComponent){
+
+
+    // this.popup.showPopup('Loading items please wait...','pending');
     this.mycart=this.svcdatatransfer.getmycart();
     this.itemOBJ=this.svcdatatransfer.getCartItems();
     this.count=this.itemOBJ.length;
@@ -83,9 +70,18 @@ export class MainComponent {
       if(response.error)
       {
         console.log('Error loading items');
+        this.content.state='error';
+        this.content.text='Sorry! Something went wrong.';
+        // this.popup.showPopup('Error in loading items','error');
       }
       else{
+      // this.popup.hidePopup();
       this.foodlist=response.message;
+      this.content.state='done';
+      this.content.text='Items loaded successfully';
+      setTimeout(() => {
+        this.content.hidden=true;
+      }, 1000);
       }
     })
   }

@@ -4,19 +4,22 @@ const app=express();
 const getenv=require('./getenv');
 const PORT = getenv.PORT;
 app.use(cors());
-const tokenRoute = require("./routes/token");
-const userRoute = require("./routes/user");
-const itemRoute = require("./routes/items");
-const masterRoute = require("./routes/master");
+const tokenRouter = require("./routes/token.router");
+const userRouter = require("./routes/user.router");
+const itemRouter = require("./routes/items.router");
+const masterRouter = require("./routes/master.router");
+const ordersRouter = require('./routes/orders.router');
 // const something = require('../app-ui/dist/app-ui')
 const path=require('path');
 
 const {dbconnect} = require('./configs/database.config');
 dbconnect();
-app.use('/api/master/items',itemRoute);
-app.use('/api/token',tokenRoute);
-app.use('/api/user',userRoute);
-app.use('/api/master',masterRoute);
+app.use('/api/master/items',itemRouter);
+app.use('/api/token',tokenRouter);
+app.use('/api/user',userRouter);
+app.use('/api/master',masterRouter);
+app.use('/api/orders',ordersRouter);
+
 
 
 

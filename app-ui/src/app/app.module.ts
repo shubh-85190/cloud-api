@@ -45,7 +45,7 @@ import { ConfirmorderComponent } from './confirmorder/confirmorder.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [ApisService],
+  providers: [ApisService,PopupComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
