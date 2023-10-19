@@ -11,7 +11,8 @@ const masterRoute = require("./routes/master");
 // const something = require('../app-ui/dist/app-ui')
 const path=require('path');
 
-
+const {dbconnect} = require('./configs/database.config');
+dbconnect();
 app.use('/api/master/items',itemRoute);
 app.use('/api/token',tokenRoute);
 app.use('/api/user',userRoute);
