@@ -33,25 +33,25 @@
             
             <tr>
                 <td>Delivery Charge</td>
-                <td>: 40.00</td>
+                <td>: {{this.deliveryCharge}}</td>
             </tr>
             <tr>
                 <td>GST & other taxes</td>
-                <td>: 18.00</td>
+                <td>: {{this.tax}}</td>
             </tr>
             <tr class="text-success">
                 <td>Discount</td>
-                <td>: -10.00</td>
+                <td>: -{{this.discount}}</td>
             </tr>
             <tr>
                 <td>Total Amount </td>
-                <td>: </td>
+                <td>: {{this.totalamount}}</td>
             </tr>
         </table>
     </div>
 
     <div class="w-100 text-center">
-        <button class="btn btn-primary w-75">Confirm Order</button>
+        <button class="btn btn-primary w-75" (click)="confirmClick()">Confirm Order</button>
     </div>
 </ng-template>
 </div>

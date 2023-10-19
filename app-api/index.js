@@ -8,16 +8,31 @@ const tokenRoute = require("./routes/token");
 const userRoute = require("./routes/user");
 const itemRoute = require("./routes/items");
 const masterRoute = require("./routes/master");
+// const something = require('../app-ui/dist/app-ui')
+const path=require('path');
 
-app.use('/master/items',itemRoute);
-app.use('/token',tokenRoute);
-app.use('/user',userRoute);
-app.use('/master',masterRoute);
+
+app.use('/api/master/items',itemRoute);
+app.use('/api/token',tokenRoute);
+app.use('/api/user',userRoute);
+app.use('/api/master',masterRoute);
+
+
+
+app.use(express.static(path.join(__dirname,'../app-ui/dist/app-ui')));
+
+
+
+
+app.get('*',(req,res)=>{
+    res.sendFile(path.join(__dirname,'../app-ui/dist/app-ui/index.html'));
+    console.log('Inside aestrick.......');
+})
+
+
 
 app.get("/",(req,res)=>{
-    res.json({
-        message:`Server is working...`,
-    });
+    res.render('index.html');
 });
 
 // const corsOption={

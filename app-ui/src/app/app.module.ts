@@ -19,6 +19,7 @@ import { PopupComponent } from './popup/popup.component';
 import { MloginComponent } from './master/mlogin/mlogin.component';
 import { ViewitemsComponent } from './master/viewitems/viewitems.component';
 import { UpdateitemComponent } from './master/updateitem/updateitem.component';
+import { ConfirmorderComponent } from './confirmorder/confirmorder.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { UpdateitemComponent } from './master/updateitem/updateitem.component';
     PopupComponent,
     MloginComponent,
     ViewitemsComponent,
-    UpdateitemComponent
+    UpdateitemComponent,
+    ConfirmorderComponent
   ],
   imports: [
     BrowserModule,

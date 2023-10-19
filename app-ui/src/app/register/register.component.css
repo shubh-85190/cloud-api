@@ -8,10 +8,6 @@ width: 90% !important;
 background: radial-gradient(circle, rgba(64,209,39,1) 24%, rgba(78,255,46,1) 64%, rgba(98,255,87,1) 79%);
 }
 
-.img-thumbnail{
-    max-width: 50%;
-    max-height: 50%;
-}
 
 .radio-inputs {
     display: flex;
@@ -123,6 +119,11 @@ background: radial-gradient(circle, rgba(64,209,39,1) 24%, rgba(78,255,46,1) 64%
     white-space: nowrap;
     width: 1px;
   }
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
 
   @media only screen and (max-width:650px){
   .container-fluid{
@@ -146,7 +147,7 @@ background: radial-gradient(circle, rgba(64,209,39,1) 24%, rgba(78,255,46,1) 64%
   }
   .input-group > input,
   .form-control{
-    
+    box-shadow: inset 1px 1px 10px 1px grey;
     border-radius: 0 0 12px 12px !important;
     width: 100% !important;
     /* justify-content: center !important; */

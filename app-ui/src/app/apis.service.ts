@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import { ADD_USER, GET_ID, GET_ITEMS, LOGIN } from './shared/constants/urs'
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,12 @@ export class ApisService {
 
   constructor(private http:HttpClient) { }
   svcgetitemlist():Observable<any>{
-    return this.http.get(`${this.baseURL}/master/items/viewitem`);
+    return this.http.get(GET_ITEMS);
   }
   adduser(obj:any):Observable<any>{
-    return this.http.post(`${this.baseURL}/user/adduser`,obj);
+    return this.http.post(ADD_USER,obj);
   }
   login(obj:any):Observable<any>{
-    return this.http.post(`${this.baseURL}/user/login`,obj);
+    return this.http.post(LOGIN,obj);
   }
 }

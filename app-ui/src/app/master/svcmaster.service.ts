@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { ADD_ITEM, DELETE_ITEM, GET_ID, KITCHEN_STATUS, LOGIN_MASTER, UPDATE_ITEM, VIEW_ITEM } from '../shared/constants/urs'
 
 
 @Injectable({
@@ -9,40 +9,38 @@ import { Observable } from 'rxjs';
 })
 export class SvcmasterService {
   constructor(private http:HttpClient) { }
-  private base='http://localhost:5500/master';
-
   // login api
   login(dataObj:any):Observable<any>{
-    return this.http.post(`${this.base}/login`,dataObj);
+    return this.http.post(LOGIN_MASTER,dataObj);
   }
 
 
   // Services for kitchen status
   svcChangeKitchenStatus(dataObj:any):Observable<any>{
-    return this.http.post(`${this.base}/kitchenstatus`,dataObj);
+    return this.http.post(KITCHEN_STATUS,dataObj);
   }
   svcgetKitchenStatus(dataObj:any):Observable<any>{
-    return this.http.post(`${this.base}/kitchenstatus`,dataObj);
+    return this.http.post(KITCHEN_STATUS,dataObj);
   }
 
   // Services for items
   svcGetId():Observable<any>{
-    return this.http.get(`${this.base}/items/getid`);
+    return this.http.get(GET_ID);
   }
   svcAddItem(dataObj:any):Observable<any>{
-    return this.http.post(`${this.base}/items/additem`,dataObj);
+    return this.http.post(ADD_ITEM,dataObj);
   }
 
   svcDeleteItem(dataObj:any):Observable<any>{
-    return this.http.post(`${this.base}/items/deleteitem`,dataObj);
+    return this.http.post(DELETE_ITEM,dataObj);
   }
 
   svcUpdateItem(dataObj:any):Observable<any>{
-    return this.http.post(`${this.base}/items/updateitem`,dataObj);
+    return this.http.post(UPDATE_ITEM,dataObj);
   }
 
   svcViewItems():Observable<any>{
-    return this.http.get(`${this.base}/items/viewitem`);
+    return this.http.get(VIEW_ITEM);
   }
 
   // services for orders
@@ -51,15 +49,15 @@ export class SvcmasterService {
   // }
 
   svcDeleteOrder(dataObj:any):Observable<any>{
-    return this.http.post(`${this.base}/master/deleteitem`,dataObj);
+    return this.http.post(DELETE_ITEM,dataObj);
   }
 
   svcUpdateOrder(dataObj:any):Observable<any>{
-    return this.http.post(`${this.base}/master/updateitem`,dataObj);
+    return this.http.post(DELETE_ITEM,dataObj);
   }
 
   svViewOrders(dataObj:any):Observable<any>{
-    return this.http.post(`${this.base}/master/deleteitem`,dataObj);
+    return this.http.post(DELETE_ITEM,dataObj);
   }
 
 }
