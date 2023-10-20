@@ -10,7 +10,8 @@ try{
     console.log(body);
     const result = await ordersSchema.create(body);
     return orderid;
-}catch{
+    }
+catch{
     return 0;
 }
 }

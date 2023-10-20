@@ -11,10 +11,18 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   email:string='';
   password:string='';
+  popup:any={
+    text : 'Loggin in...',
+    state:'pending',
+    hidden:true
+  }
 
   constructor(private service:ApisService,private router:Router){}
 
   login(){
+    this.popup.hidden=false
+    this.popup.text='Loggin in...';
+    this.popup.state='pending';
     let obj={
       email:this.email,
       password:this.password
@@ -22,13 +30,19 @@ export class LoginComponent {
     this.service.login(obj).subscribe(
       response=>{
         console.log(response);
+        this.popup.text=response.message;
         if(response.error)
         {
-          alert('Invalid user/password.');
+          this.popup.state='error';
           return;
         }
         else{
-           this.router.navigate(['/main']);
+          this.popup.state='done'
+          setTimeout(()=>{
+            this.popup.hidden=true;
+            this.router.navigate(['/main']);
+          },1000)          
+          
         }
       }
     )

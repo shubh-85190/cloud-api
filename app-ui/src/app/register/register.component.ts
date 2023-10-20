@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppRoutingModule } from '../app-routing.module';
 import { ApisService } from '../apis.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -18,9 +19,20 @@ export class RegisterComponent {
   address:string='';
   pincode:String='';
   userObj:any={};
-  constructor(private service:ApisService){}
+
+  popup:any = {
+    text:'Registering new user...',
+    hidden:true,
+    state:'pending'
+  }
+
+  constructor(private service:ApisService,private router:Router){}
   submitClick():void
   {
+    this.popup.text='Registering new user...';
+    this.popup.hidden=false;
+    this.popup.state='pending';
+
     this.userObj={
       "email":this.email,
       "password":this.password,
@@ -35,11 +47,20 @@ export class RegisterComponent {
     console.log(this.userObj);
     this.service.adduser(this.userObj).subscribe(
       response=>{
+        this.popup.text = response.message;
         console.log(response);
         if(response.error)
         {
-          alert(response.message);
+          this.popup.state='error';
           return;
+        }
+        else{
+          this.popup.state='done'
+          setTimeout(()=>{
+            this.popup.hidden=true;
+            this.router.navigate(['/main']);
+          },1000)          
+          
         }
       }
     );
