@@ -9,7 +9,7 @@ const userRouter = require("./routes/user.router");
 const itemRouter = require("./routes/items.router");
 const masterRouter = require("./routes/master.router");
 const ordersRouter = require('./routes/orders.router');
-// const something = require('../app-ui/dist/app-ui')
+// const something = require('./dist/app-ui')
 const path=require('path');
 
 const {dbconnect} = require('./configs/database.config');
@@ -23,13 +23,13 @@ app.use('/api/orders',ordersRouter);
 
 
 
-app.use(express.static(path.join(__dirname,'../app-ui/dist/app-ui')));
+app.use(express.static(path.join(__dirname,'./dist/app-ui')));
 
 
 
 
 app.get('*',(req,res)=>{
-    res.sendFile(path.join(__dirname,'../app-ui/dist/app-ui/index.html'));
+    res.sendFile(path.join(__dirname,'./dist/app-ui/index.html'));
     console.log('Inside aestrick.......');
 })
 
