@@ -9,6 +9,6 @@ const dbname = getenv.DBNAME;
 
 const uri = `mongodb+srv://${username}:${password}@${cluster}/${dbname}?retryWrites=true&w=majority`;
 
-exports.dbconnect = ()=>{
-    connect(uri).then(()=>console.log('connected successfully'),(error)=>console.log(error));
+exports.dbconnect = async ()=>{
+    await connect(uri).then(()=>console.log('connected successfully'),(error)=>console.log(error));
 }
