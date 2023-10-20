@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5500/api'
+const BASE_URL = 'https://shy-jade-turtle-tutu.cyclic.app/api'
 
 export const GET_ITEMS = `${BASE_URL}/master/items/viewitem`
 export const ADD_USER = `${BASE_URL}/user/adduser`
