@@ -13,7 +13,13 @@ const ordersRouter = require('./routes/orders.router');
 const path=require('path');
 
 const {dbconnect} = require('./configs/database.config');
-dbconnect();
+dbconnect().then(
+    ()=>{
+        app.listen(PORT,'0.0.0.0',(request,response)=>{
+            console.log(`Server is listening at port ${PORT}`);
+        })
+    }
+);
 app.use('/api/master/items',itemRouter);
 app.use('/api/token',tokenRouter);
 app.use('/api/user',userRouter);
@@ -52,6 +58,6 @@ app.get("/",(req,res)=>{
 
 
 
-app.listen(PORT,'0.0.0.0',(request,response)=>{
-    console.log(`Server is listening at port ${PORT}`);
-})
+// app.listen(PORT,'0.0.0.0',(request,response)=>{
+//     console.log(`Server is listening at port ${PORT}`);
+// })
