@@ -43,7 +43,7 @@ const authpath =[
 ]
 app.get('*',(req,res)=>{
     // console.log(req.headers.headers);
-    res.sendFile(path.join(__dirname,'../app-ui/dist/app-ui/index.html'));
+    res.sendFile(path.join(__dirname,'./app-ui/dist/app-ui/index.html'));
     console.log('Inside aestrick.......');
 })
 
