@@ -63,14 +63,6 @@ router.post('/verify',(req,res)=>{
 }
 });
 
-exports.getToken = async (user)=>{
-    return jwt.sign({user},secretKey,{expiresIn:'600s'},(err,tokenData)=>{
-        if(err){
-            return null
-        }
-        return tokenData;
-    })
-}
 
 // exports = {getToken};
 module.exports = router;

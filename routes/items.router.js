@@ -14,7 +14,8 @@ router.post('/additem',async (req,res)=>{
     res.json({
         status:'success',
         error:false,
-        message:result});
+        message:"Item Added Successfully.",
+        "result":result});
 });
 
 router.get('/getid',async (req,res)=>{
@@ -30,14 +31,24 @@ router.post('/removeitem',(req,res)=>{
     itemsController.removeItem(req.body,res);
 });
 
-router.post('/updateitem',(req,res)=>{
-    itemsController.updateItem(req.body,res);
+router.post('/updateitem',async (req,res)=>{
+    // itemsController.updateItem(req.body,res);
+    const data = req.body;
+    const result = await itemsSchema.updateOne({id:data.id},data);
+    console.log(result);
+    res.json({
+        status:'success',
+        error:false,
+        message:'Item updated successfully.',
+        result:result
+    })
 });
 
 router.get('/viewitem',async (req,res)=>{
     // itemsController.viewItems(req.body,res);
     console.log('viewitems.....');
     const result = await itemsSchema.find({});
+    // console.log(result);
     res.json({
         status:'success',
         error:false,

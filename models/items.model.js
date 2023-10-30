@@ -5,6 +5,7 @@ const itemsSchema = new Schema({
     name: { type: String, require: true },
     id: { type: Number, require: true },
     img: { type: String, require: true },
+    desc:{type:String,require:true},
     category: { type: String, require: true },
     subcategory: { type: String, require: true },
     price: { type: Number, require: true },
