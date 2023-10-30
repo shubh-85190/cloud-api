@@ -31,7 +31,7 @@ app.use('/api/orders',ordersRouter);
 
 
 
-app.use(express.static(path.join(__dirname,'../app-ui/dist/app-ui')));
+app.use(express.static(path.join(__dirname,'./app-ui/dist/app-ui')));
 
 
 
@@ -52,7 +52,7 @@ app.get('*',(req,res)=>{
 //     const authstatus = await verifyToken(req);
 //     if(authstatus)
 //     {
-//         res.sendFile(path.join(__dirname,'../app-ui/dist/app-ui/index.html'));
+//         res.sendFile(path.join(__dirname,'./app-ui/dist/app-ui/index.html'));
 //     }
 //     else{
 //         res.sendStatus(401);
