@@ -16,7 +16,7 @@ const {verifyToken} = require('./routes/token.function');
 const {dbconnect} = require('./configs/database.config');
 const loginRouter = require('./routes/login.router');
 const noauthRouter = require('./routes/noauth.router');
-dbconnect();
+
 
 app.use('/api/',noauthRouter);
 app.use('/api/login',loginRouter);
@@ -41,7 +41,8 @@ const noauthpath =[
 const authpath =[
     '/master/additems','/master/viewitems','/master/currentorders','/master/updateitem','/master/mainapp'
 ]
-app.get('*',(req,res)=>{
+app.get('*',async (req,res)=>{
+    await dbconnect();
     // console.log(req.headers.headers);
     res.sendFile(path.join(__dirname,'./dist/app-ui/index.html'));
     console.log('Inside aestrick.......');
