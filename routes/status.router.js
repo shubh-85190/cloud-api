@@ -11,7 +11,7 @@ router.get('/getstatus',async (req,res)=>{
   res.json({
     error:false,
     status:'success',
-    message:result
+    message:result.status
   });
 })
 

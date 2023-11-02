@@ -10,6 +10,21 @@ router.use(express.json());
 
 router.post('/addanonymousorder',async (req,res)=>{
     let body = req.body;
+    let haserror=false;
+    if(!body.user.name || !body.user.mobile || !body.user.address || !body.user.pincode){
+        haserror=true;
+    }
+    if(!body.order.items){
+        haserror=true
+    }
+    if(haserror){
+        res.json({
+            status:'success',
+            error:true,
+            message:'Invalid data provided.'
+        })
+        return;
+    }
     const count = await ordersSchema.countDocuments();
     body.order['status'] = OrdersStatus.NEW;
     body.order['orderid'] = count+1;
@@ -22,7 +37,7 @@ router.post('/addanonymousorder',async (req,res)=>{
     {res.json({
         status:'success',
         error:false,
-        Message:result,
+        message:result,
         orderid:body.order.orderid
     });
 }
@@ -30,7 +45,7 @@ else{
     res.json({
         status:'success',
         error:true,
-        Message:'Cannot place order right now. Error in Application.'
+        message:'Cannot place order right now. Error in Application.'
     });
 }
 })
