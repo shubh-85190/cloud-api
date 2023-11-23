@@ -41,8 +41,10 @@ const noauthpath =[
 const authpath =[
     '/master/additems','/master/viewitems','/master/currentorders','/master/updateitem','/master/mainapp'
 ]
+
+dbconnect();
 app.get('*',async (req,res)=>{
-    await dbconnect();
+    
     // console.log(req.headers.headers);
     res.sendFile(path.join(__dirname,'./dist/app-ui/index.html'));
     console.log('Inside aestrick.......');
